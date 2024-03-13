@@ -31,5 +31,24 @@ class Tree {
 
         return helper(0, SortedArray.length - 1);
     }
+
+    // Other methods: insert, deleteItem, find, levelOrder, inOrder, preOrder, postOrder,
+    // height, depth, isBalanced, rebalance
 }
 
+// Driver script
+const getRandomNumbers = (count) => {
+    const numbers = [];
+    for (let i = 0; i < count; i++) {
+        numbers.push(Math.floor(Math.random() * 100)); 
+    }
+
+    return numbers;
+
+};
+
+const randomNumbers = getRandomNumbers(10); //Generatig an array of random numbers
+const bst = new Tree(randomNumbers); // Creating a balanced binary search tree
+console.log("Is the tree balanced?", bst.isBalanced()); // Checking if the tree is balanced
+console.log("Level order traversal:");
+bst.levelOrder(console.log); // Printing level order traversal
