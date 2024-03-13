@@ -1,0 +1,65 @@
+Purpose of Binary Search Trees (BSTs):
+Binary Search Trees are a fundamental data structure in computer science used to store and manage sorted data efficiently. The key property of a binary search tree is that, for each node:
+
+The values of all nodes in the left subtree are less than the value of the node.
+The values of all nodes in the right subtree are greater than the value of the node.
+BSTs enable fast search, insertion, and deletion operations, making them ideal for scenarios where quick access to sorted data is required.
+
+Understanding the Code:
+Node Class:
+javascript
+Copy code
+class Node {
+    constructor(data) {
+        this.data =  data;
+        this.left = null;
+        this.right = null;
+    }
+}
+This class represents a node in the binary search tree. Each node has some data, a reference to its left child, and a reference to its right child.
+Tree Class:
+javascript
+Copy code
+class Tree {
+    constructor(array) {
+        this.root = this.buildTree(array);
+    }
+}
+
+The Tree class represents the Binary Search Tree. It has a root property, which points to the root node of the tree. The constructor takes an array of data as input and constructs the tree from it.
+Building the Tree:
+javascript
+Copy code
+buildTree(array) { ... }
+The buildTree method constructs a balanced binary search tree from a sorted array of data. It uses a helper function to recursively divide the array into two halves and create nodes.
+Balancing the Tree:
+javascript
+Copy code
+rebalance() { ... }
+The rebalance method rebalances an unbalanced binary search tree. It first stores all nodes in the tree using an in-order traversal, then rebuilds the tree from the sorted array of nodes, ensuring it becomes balanced.
+Tree Traversal Methods:
+javascript
+Copy code
+levelOrder(callback) { ... }
+preOrder(callback) { ... }
+inOrder(callback) { ... }
+postOrder(callback) { ... }
+These methods perform different types of tree traversals: level-order, pre-order, in-order, and post-order. They allow you to visit all nodes in the tree in a specific order and perform a callback operation on each node.
+Checking Balance:
+javascript
+Copy code
+isBalanced(node = this.root) { ... }
+checkHeight(node) { ... }
+These methods check if the binary search tree is balanced. They calculate the height of each subtree recursively and compare the heights to determine balance.
+Driver Script:
+The driver script generates random numbers, creates an initial binary search tree (bst), checks if it's balanced, and performs various traversals on it.
+Then, it creates an unbalanced binary search tree (unbalancedBst), rebalances it, and performs the same operations as before to demonstrate the rebalancing process.
+Applications of Binary Search Trees:
+Binary Search Trees are commonly used in:
+
+Database systems for indexing and searching data.
+Symbol tables in compilers and interpreters.
+Implementing binary search algorithms.
+File systems for organizing file directories.
+Implementing various data structures like priority queues, sets, and maps.
+In summary, Binary Search Trees are versatile data structures with various applications in computer science, particularly where efficient management and retrieval of sorted data are required.

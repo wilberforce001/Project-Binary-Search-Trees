@@ -78,6 +78,71 @@ class Tree {
             }
         }
     }
+
+    preOrder(callback) {
+        this.preOrderHelper(this.root, callback);
+    }
+
+    preOrderHelper(node, callback) {
+        if (node !== null) {
+            callback(node.data);
+            this.preOrderHelper(node.left, callback);
+            this.preOrderHelper(node.right, callback);
+        }
+    }
+
+    inOrder(callback) {
+        this.inOrderHelper(this.root, callback);
+    }
+
+    inOrderHelper(node, callback) {
+        if (node !== null) {
+            this.inOrderHelper(node.left, callback);
+            callback(node.data);
+            this.inOrderHelper(node.right, callback);
+        }
+    }
+
+    postOrder(callback) {
+        this.postOrderHelper(this.root, callback);
+    }
+
+    postOrderHelper(node, callback) {
+        if (node !== null) {
+            this.postOrderHelper(node.left, callback);
+            this.postOrderHelper(node.right, callback);
+            callback(node.data);
+        }
+    }
+
+    rebalance() {
+        const nodes = [];
+        this.storeInOrder(this.root, nodes); // Store nodes in in-order traversal
+
+        // Rebuild the tree using the in-order traversal array
+        this.root = this.buildTreeFromInOrder(nodes, 0, nodes.length - 1);    
+
+    }
+
+    storeInOrder(node, nodes) {
+        if (node !== null) {
+            this.storeInOrder(node.left, nodes);
+            nodes.push(node);
+            this.storeInOrder(node.right, nodes);
+        }
+    }
+
+    buildTreeFromInOrder(nodes, start, end) {
+        if (start > end) {
+            return null;
+        }
+
+        const mid = Math.floor((start + end) / 2);
+        const newNode = nodes[mid];
+        newNode.left = this.buildTreeFromInOrder(nodes, start, mid - 1);
+        newNode.right = this.buildTreeFromInOrder(nodes, mid + 1, end);
+        return newNode;
+    }
     // Other methods: insert, deleteItem, find, levelOrder, inOrder, preOrder, postOrder,
     // height, depth, isBalanced, rebalance
 }

@@ -36,4 +36,3 @@ Approach 2: Using queue – Iterative Approach in BSTapproach2.js
 1. First initialize a queue with root node and loop until the queue is empty.
 2. Remove first node from the queue and find mid element of the sorted array.
 3. Create new node with previously find middle node and set left child to the deque node left child if present and also set the right child with deque node right child. Enqueue the new node onto the queue. Set the right child of the dequeued node to the middle element on the left side of the sorted array. If the dequeued node has a left child, enqueue it onto the queue. Return the root node.
-
